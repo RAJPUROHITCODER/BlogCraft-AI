@@ -7,7 +7,7 @@ load_dotenv()
 ### Get llm
 def get_llm(model_name: str ="openai/gpt-oss-20b", temperature: float =0.5):
     api_key = os.getenv("GROQ_API_KEY")
-    llm = ChatGroq(model=model_name,temperature=temperature)
+    primary = ChatGroq(model=model_name,temperature=temperature)
     fallback = ChatGroq(model="openai/gpt-oss-120b")
     llm = primary.with_fallbacks([fallback])
     return llm
